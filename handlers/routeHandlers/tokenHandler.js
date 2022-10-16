@@ -79,7 +79,7 @@ handler._token.get = (requestProperties, callback) => {
       }
     });
   } else {
-    callback(404, { error: 'Your requested token was not found!' });
+    callback(404, { error: 'Your requested user was not found!' });
   }
 };
 handler._token.put = (requestProperties, callback) => {
