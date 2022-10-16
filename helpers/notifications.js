@@ -7,7 +7,7 @@ const querystring = require('querystring');
 const notifications = {};
 
 // sent sms to user using twilio api
-notifications.sentTwilioSms = (phone, msg, callback) => {
+notifications.sendTwilioSms = (phone, msg, callback) => {
   // input validation
   const userPhone =
     typeof phone === 'string' && phone.trim().length === 11
@@ -29,11 +29,12 @@ notifications.sentTwilioSms = (phone, msg, callback) => {
       body: userMsg,
     };
     // stringify the payload
+
     const stringifyPayload = querystring.stringify(payload);
     // configure the request details
     const requestDetails = {
       hostname: 'api.twilio.com',
-      method: 'GET',
+      method: 'POST',
       path: `2010-04-01/Accounts/${twilio.accountSid}/Messages.json`,
       auth: `${twilio.accountSid}:${twilio.authToken}`,
       headers: {
